@@ -1,34 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Apna Forum made with [Next.js](https://nextjs.org/), [Django](https://djangoproject.com/) and :heart: by [Team Pixidevs](https://github.com/pixiedevs/).
+
 
 ## Getting Started
 
-First, run the development server:
+First, install all the dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+bun install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
+# or
+bun run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Before running the project you need a env file.
+So  create a file as **.env.local** and paste below content
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+NEXT_PUBLIC_KEYWORDS="Apna Forum, Forum, Questions, Answers, topic, comment, reply"
+NEXT_PUBLIC_DESCRIPTION=""
+NEXT_PUBLIC_API_BASE="http://127.0.0.1:8001"
+NEXT_PUBLIC_GTAGID="xyz"
+NEXT_PUBLIC_APP_NAME="Apna Forum"
+NEXT_PUBLIC_DEBUG_AUTH_TOKEN="token"
+DEBUG=true
+```
 
-## Learn More
+### And to test the project you need a demo or a testing server for the api data which you can find below
+[**demo-server**](https://github.com/pixiedevs/apnaforum-dev-backend/)  (comming soon)
 
-To learn more about Next.js, take a look at the following resources:
+### Before edit anything or any help first read apnaforum official docs
+[**Apna Forum Docs**](https://github.com/pixiedevs/apnaforum-docs/) (comming soon)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [x] Backend
+- [ ] Styling
+- [ ] Components
+- [ ] HomePage
+- [ ] Layout
