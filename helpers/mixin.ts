@@ -55,7 +55,7 @@ let headersList = {
     "authorization": process.env.NEXT_PUBLIC_DEBUG_AUTH_TOKEN ?? getAuthToken()
 }
 /* Will return fetch response without converting to json or text */
-const usePostFetch = async (path = '', formData: FormData, method: string = 'POST', auth = true) => {
+const usePostFetch = async (path = '', formData: FormData, method: string = 'POST', auth = false) => {
 
     return fetch(`${process.env.NEXT_PUBLIC_API_BASE}/${path}?res_type=api`, {
         method: method,
@@ -65,7 +65,7 @@ const usePostFetch = async (path = '', formData: FormData, method: string = 'POS
     });
 }
 /* The path must not start with '/' and data string must be start with & */
-const dataFetch = async (path = '', data: string = '', method: string = 'GET', auth = true) => {
+const dataFetch = async (path = '', data: string = '', method: string = 'GET', auth = false) => {
 
     return fetch(`${process.env.NEXT_PUBLIC_API_BASE}/${path}?res_type=api${data}`, {
         headers: auth ? headersList : {},
