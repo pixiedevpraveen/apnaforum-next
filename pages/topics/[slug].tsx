@@ -14,6 +14,8 @@ const TopicView: NextPage<{ topicData: { topic: Topic, comments: [] }, error: bo
 
 
     useEffect(() => {
+        console.log(topicData);
+        
         convertMarkToHtmlWithQuery('.md-html')
     }, [])
 
@@ -34,7 +36,7 @@ const TopicView: NextPage<{ topicData: { topic: Topic, comments: [] }, error: bo
         setFloatReply(!floatReply)
     }
 
-    if (error)
+    if (error || !topicData.topic)
         return <Custom404 message='The topic you are finding is no more available.' />
 
     if (pending)
