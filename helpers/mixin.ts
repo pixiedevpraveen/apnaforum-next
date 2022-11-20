@@ -65,7 +65,7 @@ const usePostFetch = async (path = '', formData: FormData, method: string = 'POS
     });
 }
 /* The path must not start with '/' and data string must be start with & */
-const useFetch = async (path = '', data: string = '', method: string = 'GET', auth = true) => {
+const dataFetch = async (path = '', data: string = '', method: string = 'GET', auth = true) => {
 
     return fetch(`${process.env.NEXT_PUBLIC_API_BASE}/${path}?res_type=api${data}`, {
         headers: auth ? headersList : {},
@@ -119,4 +119,4 @@ const stopLoading = () => {
     }
 }
 
-export { objToFormData, usePostFetch, useFetch, markToHtml, convertMarkToHtmlWithQuery, setMsg, unsetMsg, startLoading, stopLoading }
+export { objToFormData, usePostFetch, dataFetch, markToHtml, convertMarkToHtmlWithQuery, setMsg, unsetMsg, startLoading, stopLoading }

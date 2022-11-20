@@ -1,5 +1,5 @@
 import { FC, useState } from 'react'
-import { useFetch, setMsg } from 'helpers/mixin';
+import { dataFetch, setMsg } from 'helpers/mixin';
 import { startLoading, stopLoading } from "helpers/mixin";
 
 const Like: FC<{ isChecked: boolean, to: string, toId: string, count?: number }> = ({ isChecked, to, toId, count }) => {
@@ -11,7 +11,7 @@ const Like: FC<{ isChecked: boolean, to: string, toId: string, count?: number }>
 
         startLoading(2000)
 
-        useFetch(`api/action/`, `&action=like&to=${to}&id=${toId}`, topicLike ? 'DELETE' : 'GET')
+        dataFetch(`api/action/`, `&action=like&to=${to}&id=${toId}`, topicLike ? 'DELETE' : 'GET')
             .then((res) => res.json())
             .then((data) => {
                 if (data.message.tag === 'success') {

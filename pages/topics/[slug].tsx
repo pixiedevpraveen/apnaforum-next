@@ -6,16 +6,11 @@ import { Topic, TopicShort } from "models/Topic";
 import Custom404 from "../404"
 import AddComment from 'components/AddComment';
 import Title from 'components/Title';
-import { convertMarkToHtmlWithQuery, useFetch } from "helpers/mixin";
+import { convertMarkToHtmlWithQuery, dataFetch } from "helpers/mixin";
 import Head from "next/head"
 import AddReply from 'components/AddReply';
 
 const TopicView: NextPage<{ topicData: { topic: Topic, comments: [] }, error: boolean, pending: boolean }> = ({ topicData, error, pending }) => {
-    if (error)
-        return <Custom404 message='The topic you are finding is no more available.' />
-
-    if (pending)
-        return (<div className='loading'> loading...</div>)
 
 
     useEffect(() => {
@@ -39,6 +34,11 @@ const TopicView: NextPage<{ topicData: { topic: Topic, comments: [] }, error: bo
         setFloatReply(!floatReply)
     }
 
+    if (error)
+        return <Custom404 message='The topic you are finding is no more available.' />
+
+    if (pending)
+        return (<div className='loading'> loading...</div>)
 
     return (
         <div className='page'>
@@ -80,7 +80,7 @@ const TopicView: NextPage<{ topicData: { topic: Topic, comments: [] }, error: bo
 }
 
 export async function getServerSidePaths() {
-    const topicData = await useFetch("api/topics/").then((res) => res.json())
+    const topicData = await dataFetch("api/topics/").then((res) => res.json())
 
     const paths = topicData.topics.map((topic: TopicShort) => ({
         params: { slug: topic.slug }
@@ -96,7 +96,7 @@ export async function getServerSideProps({ params }: { params: { slug: string, f
     let pending = true;
 
     try {
-        topicData = await useFetch(`api/topics/${params.slug}/`, '&res=all').then((res) => res.json())
+        topicData = await dataFetch(`api/topics/${params.slug}/`, '&res=all').then((res) => res.json())
         pending = false
     } catch (err) {
         error = true;
